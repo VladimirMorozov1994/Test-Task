@@ -1,0 +1,48 @@
+$breakpoints: (
+        xs: 460px, // extra small
+        sm: 576px, // small
+        md: 768px, // medium
+        xm: 992px, // extra medium
+        sl: 1115px, // semi large
+        lg: 1200px, // large
+        xl: 1360px, // extra large
+        sg: 1420px, // semi grand
+        gr: 1560px, // grand
+        xg: 1720px, // extra grand
+        hd: 1920px, // hd screens
+        ud: 2560px, // ultra hd screens
+        rt: 3440px
+);
+
+$container-max-widths: (
+        sm: 520px,
+        md: 680px,
+        xm: 824px,
+        sl: 824px,
+        lg: 1240px,
+        xl: 1175px,
+        sg: 1280px,
+        gr: 1380px,
+        xg: 1450px,
+        hd: 1660px,
+        ud: 1800px,
+        rt: 2674px
+);
+
+$delays: (
+        first: 0,
+        second: 0.5,
+        third: 1,
+        fourth: 1.5,
+        fifth: 2
+);
+
+$z-indexes: (
+        header: 110,
+        modal: 120
+);
+
+$column-padding: 15px;
+$xs-column-padding: 20px;
+$sprite-background-spacing: 10px;
+$sprite-background-spacing-hd: 15px;

@@ -1,0 +1,1175 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+
+# IMPORTS
+
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# IMPORTS
+--------------------------------------------------------------*/
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+
+*,
+:before,
+:after {
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none !important
+}
+
+:focus {
+    ////outline: 2px dashed #ff7332;
+    //outline: 2px solid #9fcaf9;
+    //outline-offset: 5px;
+}
+
+main#main {
+    overflow: hidden;
+}
+
+html {
+    font-size: 10px;
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @include respond-to(lg) {
+        font-size: 10px;
+    }
+
+    @include respond-to(sl) {
+        font-size: 8px;
+    }
+
+    @include respond-to(md) {
+        font-size: 7.5px;
+    }
+
+    @include respond-to(xs) {
+        font-size: 8.75px;
+    }
+}
+
+body,
+button {
+    font-size: 1.6rem;
+
+}
+
+body {
+    color: #2e3c54;
+    background: #f7f7f7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+}
+
+body,
+menu,
+h1,
+h2,
+h3,
+h4,
+blockquote,
+p,
+figure {
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+q {
+    quotes: "«""»";
+}
+
+cite {
+    font-style: normal;
+}
+
+address {
+    font-style: normal;
+}
+
+.noscroll {
+    overflow: hidden;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-grid {
+    display: grid;
+}
+
+.margin-right-auto {
+    margin-right: auto;
+}
+
+.margin-left-auto {
+    margin-left: auto;
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.justify-content-start {
+    justify-content: flex-start;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.align-items-stretch {
+    align-items: stretch;
+}
+
+.align-items-start {
+    align-items: start;
+}
+
+.align-items-end {
+    align-items: flex-end;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+
+.text-white {
+    color: #fff;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.row {
+    @include row;
+}
+
+.column {
+    @include column;
+
+    @include respond-to(xs) {
+        &.thin-column {
+            padding: 0 10px;
+        }
+    }
+}
+
+.column-2 {
+    width: 50%;
+
+    @include respond-to(xm) {
+        width: 100%;
+    }
+}
+
+.column-3 {
+    width: calc(100% / 3);
+}
+
+.no-padding {
+    padding: 0px 0px;
+}
+
+.clear-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.linebreak {
+    @include respond-from(xs) {
+        &:before {
+            content: '';
+            display: block;
+        }
+    }
+}
+
+.xs-linebreak {
+    @include respond-to(xs) {
+        display: block;
+    }
+}
+
+.container {
+    margin: auto;
+    padding: 0 15px;
+
+    @include respond-from(xg) {
+        max-width: container-max-width(xg);
+    }
+
+    @include respond-from(gr) {
+        max-width: container-max-width(gr);
+    }
+
+    @include respond-from(sg) {
+        max-width: container-max-width(sg);
+    }
+
+    @include respond-from(lg) {
+        max-width: container-max-width(lg);
+    }
+
+    @include respond-from(xm) {
+        max-width: container-max-width(xm);
+    }
+
+    @include respond-from(md) {
+        max-width: container-max-width(md);
+    }
+
+    @include respond-from(sm) {
+        max-width: container-max-width(sm);
+    }
+
+    @include respond-from(xs) {
+        padding: 0 $xs-column-padding;
+    }
+}
+
+.btn {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 48px;
+    color: #1F1F1F;
+    background: #FFFFFF;
+    border-radius: 8px;
+    transition: .3s;
+    border: 3px solid #FFFFFF;
+    padding: 10px 43px;
+
+    &:hover {
+        border: 3px solid #E5331B;
+    }
+}
+
+//home
+.home{
+    main .container{
+        max-width: 1300px;
+    }
+}
+
+
+// ACF Gutenberg Block "Home page main block"
+.acf-block-homepage-main {
+    background: #E5331B;
+    padding: 205px 0 105px;
+
+    h2 {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 96px;
+        line-height: 105px;
+        color: #FFFFFF;
+        margin-bottom: 60px;
+    }
+
+    p {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 32px;
+        line-height: 48px;
+        color: #1F1F1F;
+    }
+
+    .btn {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+
+        &:after {
+            content: "";
+            display: inline-block;
+            width: 25px;
+            height: 30px;
+            background: url(../img/apple.svg);
+            margin-left: 22px;
+        }
+
+        z-index: 1;
+        position: relative;
+    }
+
+    span {
+        display: block;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 27px;
+        margin: 25px 0 0 40px;
+        color: #FF9E94;
+    }
+
+    .next {
+        z-index: 1;
+        position: relative;
+        display: block;
+        width: 22px;
+        height: 15px;
+        margin: 90px auto 0;
+        background: url(../img/arrow.svg);
+    }
+    @include respond-to(xm) {
+        padding: 120px 0 40px;
+        h2{
+            font-size: 30px;
+            line-height: 30px;
+            margin-bottom: 20px;
+        }
+        p{
+            font-size: 20px;
+            line-height: 25px;
+        }
+        .next {
+            margin: 30px auto 0;
+        }
+    }
+}
+
+// ACF Gutenberg Block "Hot News"
+
+.acf-block-hot-news {
+    padding: 57px 0 90px;
+    background: #1F1F1F;
+
+    h3 {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 44px;
+        line-height: 58px;
+        color: #E5331B;
+        margin-bottom: 30px;
+    }
+
+    h3+p {
+        max-width: 240px;
+    }
+
+    p {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 27px;
+        color: #838383;
+    }
+
+    .hot-news {
+        margin-top: 75px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .item {
+        margin-bottom: 27px;
+        max-width: 330px;
+
+        .img {
+            padding: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #353535;
+            margin-bottom: 30px;
+        }
+    }
+
+    .title {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 38px;
+        margin-bottom: 30px;
+        color: #FFFFFF;
+        position: relative;
+        z-index: 1;
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 86.5%;
+            height: 21px;
+            background: #E5331B;
+            z-index: -1;
+        }
+    }
+    @include respond-to(xm) {
+        h3{
+            font-size: 30px;
+            line-height: 30px;
+            margin-bottom: 20px;
+        }
+        .hot-news{
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+//ACF Gutenberg Block "Merch slider"
+
+.acf-block-merch-slider {
+
+    padding: 60px 0;
+    background: url(../img/merch.svg) center center no-repeat #000000;
+
+    h3 {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 44px;
+        line-height: 58px;
+        color: #E5331B;
+
+        span {
+            color: #fff;
+        }
+
+        margin-bottom: 30px;
+    }
+
+    p {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 27px;
+        width: 240px;
+        color: #838383;
+    }
+
+    .merch-slider {
+        max-width: 930px;
+        margin-top: 55px;
+        position: relative;
+        padding-bottom: 95px;
+
+        .owl-nav {
+            bottom: 0;
+            right: 0;
+            position: absolute;
+
+            button {
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 21px 0 21px 23px;
+                border-color: transparent transparent transparent #E5331B;
+            }
+
+            .disabled {
+                border-color: transparent transparent transparent #2E0A05;
+            }
+
+            .owl-prev {
+                margin-right: 48px;
+                transform: rotate(180deg);
+            }
+        }
+
+        .owl-dots {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            button {
+                width: 5px;
+                height: 5px;
+                border-radius: 100%;
+                background: #C4C4C4;
+                margin-right: 20px;
+
+                &.active {
+                    background: #E5331B;
+                }
+            }
+        }
+    }
+
+    .item {
+
+        background: #1F1F1F;
+        border-radius: 0px;
+        display: flex;
+        flex-direction: row;
+        padding: 71px 30px;
+
+        .left-box,
+        .right-box {
+            width: 50%;
+        }
+
+        .right-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            width: auto;
+            height: auto;
+        }
+
+        .title {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 38px;
+            margin-bottom: 66px;
+            color: #FFFFFF;
+        }
+
+        .text {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 27px;
+            white-space: pre-line;
+            color: #838383;
+        }
+    }
+    @include respond-to(xm) {
+        h3{
+            font-size: 30px;
+            line-height: 30px;
+            margin-bottom: 20px;
+        }
+        .item{
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 20px 30px;
+            .left-box,
+            .right-box{
+                width: 100%;
+            }
+            img{
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+
+// ACF Gutenberg Block "Block Clients"
+
+.acf-block-сlients {
+    background: #E5331B;
+    padding: 60px 0 30px;
+
+    h3 {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 44px;
+        line-height: 58px;
+        color: #FFFFFF;
+        margin-bottom: 74px;
+    }
+
+    .items {
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        grid-column-gap: 10px;
+    }
+
+    .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 73px;
+
+        &:nth-child(3n+1) {
+            justify-content: flex-start;
+        }
+
+        &:nth-child(3n+3) {
+            justify-content: flex-end;
+        }
+
+        svg * {
+            fill: #000 !important;
+        }
+    }
+    @include respond-to(md) {
+        h3{
+            font-size: 30px;
+            line-height: 30px;
+            margin-bottom: 20px; 
+        }
+        .items{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+// ACF Gutenberg Block "About Us"
+.acf-block-about {
+    background: #1F1F1F;
+    padding: 60px 0 97px;
+
+    .flex-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    h3 {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 44px;
+        line-height: 58px;
+        color: #E5331B;
+        margin-right: 163px;
+        margin-bottom: 20px;
+        flex: none;
+    }
+
+    p {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 50px;
+        color: #838383;
+        white-space: pre-line;
+    }
+    @include respond-to(xm) {
+        padding: 30px 0;
+        h3{
+            font-size: 30px;
+            line-height: 30px;
+            margin-bottom: 20px;
+        }
+        .flex-box{
+            flex-direction: column;
+        }
+        p {
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
+}
+
+li::marker {
+    display: none;
+    list-style-type: none;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.sidebar {
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .sidebar-widget:not(:last-child) {
+        margin-bottom: 80px;
+    }
+
+    .post-entry {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .recent-post-item {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #838383;
+        }
+
+        .text-box {
+            margin-left: 30px;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+        .text-box a {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 38px;
+            color: #FFFFFF;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        p {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 27px;
+            color: #838383;
+        }
+    }
+
+    .sidebar-widget h2 {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 38px;
+        color: #FFFFFF;
+        position: relative;
+        z-index: 1;
+        width: fit-content;
+        margin-bottom: 36px;
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 130px;
+            height: 21px;
+            right: -30px;
+            background: #e5331b;
+            z-index: -1;
+        }
+    }
+    @include respond-to(md) {
+        .post-entry{
+            flex-direction: column;
+        }
+        .recent-post-item  .text-box{
+            margin-left: 0;
+            margin-top: 30px;
+        }
+    }
+}
+
+// Breadcrumbs
+
+.breadcrumbs {
+    margin-bottom: 41px;
+
+    i,
+    a {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 27px;
+        color: #FFFFFF;
+    }
+
+    i {
+        margin: 0 5px;
+    }
+
+    span {
+        color: #E5331B;
+    }
+}
+
+// Blog Page
+.blog-page {
+    padding: 59px 0 80px;
+    background: #000000;
+    
+    .blog-posts {
+        max-width: 809px;
+        @include respond-to(sg) {
+            max-width: 700px;
+        }
+        @include respond-to(lg) {
+            max-width: 100%;
+        }
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .sidebar {
+            margin-left: 30px;
+            width: 570px;
+            @include respond-to(lg) {
+                 width: 100%;
+                 margin: 30px 0 0 0;
+            }
+            
+        }
+        @include respond-to(lg) {
+            flex-direction: column;
+        }
+    }
+    .posts h2{
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 60px;
+        line-height: 90px;
+        color: #e5331b;
+    }
+
+    .post {
+        &:not(:last-child) {
+            margin-bottom: 80px;
+        }
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+        .title {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 900;
+            font-size: 60px;
+            line-height: 90px;
+            color: #FFFFFF;
+            margin: 20px 0;
+        }
+
+        p {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 27px;
+            color: #838383;
+        }
+
+        a {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 27px;
+            color: #E5331B;
+            margin-top: 17px;
+            display: block;
+            width: fit-content;
+        }
+    }
+
+    .btn-page {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 21px 23px 21px 0;
+        border-color: transparent #e5331b transparent transparent;
+        display: inline-block;
+        position: relative;
+
+        &.not-active {
+            border-color: transparent #421712 transparent transparent;
+        }
+
+        &.prev {
+            margin-right: 40px;
+        }
+
+        &.next {
+            transform: rotate(180deg);
+            margin-left: 40px;
+        }
+
+        a {
+            color: transparent;
+            width: 23px;
+            height: 42px;
+            display: block;
+            position: absolute;
+            top: -21px;
+        }
+    }
+
+    .pagination {
+        margin-top: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        >a,
+        span {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 900;
+            font-size: 24px;
+            line-height: 120%;
+
+            margin: 0 7px;
+        }
+
+        span {
+            color: #E5331B;
+        }
+
+        >a {
+            color: #fff;
+        }
+    }
+}
+
+// Single Page
+.single-post-page {
+    background: #1F1F1F;
+    padding: 53px 0 80px;
+
+    .single-box {
+        max-width: 809px;
+        @include respond-to(sg) {
+            max-width: 700px;
+        }
+        @include respond-to(lg) {
+            max-width: 100%;
+        } 
+    }
+    &.without-sidebar .single-box{
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .post_thumbnail {
+        margin-bottom: 20px;
+    }
+
+    .flex-box   {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .single-box img{
+            max-width: 100%;
+            height: auto;
+        }
+        @include respond-to(lg) {
+            .sidebar{
+                width: 100%;
+                margin: 30px 0 0 0;
+            }
+          
+        }
+        
+        @include respond-to(lg) {
+            flex-direction: column;
+        }
+    }
+
+    .content {
+        p {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 27px;
+            color: #FFFFFF;
+            white-space: pre-line;
+        }
+
+        p,
+        img {
+            margin-bottom: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .sidebar {
+        margin-left: 30px;
+        width: 570px;
+    }
+}
+
+// head-box
+.head-box {
+    background: #e5331b;
+    padding: 96px 0 140px;
+
+    h2 {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 60px;
+        line-height: 90px;
+        color: #FFFFFF;
+    }
+    @include respond-to(md) {
+        padding: 36px 0 40px;
+        h2{
+            font-size: 30px;
+            line-height: 30px; 
+        }
+    }
+}
+
+// clients-page
+.clients-page {
+    background: #1F1F1F;
+    padding: 50px 0;
+
+    .item svg * {
+        fill: #fff;
+    }
+
+    .items {
+        display: grid;
+        grid-template-columns: 260px 260px 260px;
+        justify-content: space-between;
+        grid-column-gap: 10px;
+    }
+
+    .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 73px;
+    }
+    @include respond-to(xm) {
+        .items  {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+// About us page
+.about-us-page {
+    background: #1F1F1F;
+    padding: 55px 0;
+
+    h2 {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 96px;
+        line-height: 105px;
+        text-align: center;
+        color: #FFFFFF;
+        padding-bottom: 80px;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        .wp-block-columns p{
+            margin-bottom: 0;
+        }
+        p {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 27px; 
+            white-space: pre-line;
+            color: #FFFFFF;
+            margin-bottom: 34px;
+        }
+    }
+}
+
+// About Page 
+.page-template-about-us{
+    #header{
+        padding-bottom: 10px;
+    }
+    @include respond-to(lg) {
+        .wp-block-columns{
+            flex-direction: column;
+        }
+        .wp-block-column:not(:first-child){
+            margin:  0;
+        }
+        figure img{
+            width: auto;
+            height: auto;
+        }
+        .wp-block-columns .wp-block-column{
+            flex-basis: 100%!important;
+        }
+    }
+    @include respond-to(md) {
+        .about-us-page h2{
+            font-size: 30px;
+            line-height: 30px;
+            padding-bottom: 40px; 
+        }
+    }
+}

@@ -1,0 +1,119 @@
+@import "variables";
+
+@mixin absolute($position: absolute) {
+    top: 0;
+    left: 0;
+    position: $position;
+}
+
+@mixin modal-wrapper-full-screen {
+    @include absolute(fixed);
+    width: 100vw;
+    height: 100vh;
+}
+
+@mixin custom-respond-to($screen) {
+    @media (max-width: $screen + 'px') {
+        @content;
+    }
+}
+
+@mixin custom-respond-from($screen) {
+    @media (min-width: ($screen + 1) + 'px') {
+        @content;
+    }
+}
+
+@mixin custom-respond-from-to($min-screen, $max-screen) {
+    @media (min-width: ($min-screen + 1) + 'px') and (max-width: $max-screen + 'px') {
+        @content;
+    }
+}
+
+@mixin respond-to($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (max-width: #{map-get($breakpoints, $breakpoint)}) {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+    }
+}
+
+@mixin respond-from($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: #{map-get($breakpoints, $breakpoint) + 1}) {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+    }
+}
+
+@mixin respond-from-to($min-breakpoint, $max-breakpoint) {
+    @if map-has-key($breakpoints, $min-breakpoint) and map-has-key($breakpoints, $max-breakpoint) {
+        @media (min-width: #{map-get($breakpoints, $min-breakpoint)}) and (max-width: #{map-get($breakpoints, $max-breakpoint)}) {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$min-breakpoint}` or `#{$max-breakpoint}`."
+        + "Please make sure it is defined in `$breakpoints` map.";
+    }
+}
+
+@mixin clearBtn($background-color: transparent) {
+    border: none;
+    background-color: $background-color;
+}
+
+@mixin row($margin-first: null, $margin-second: null) {
+    @if $margin-second {
+        margin: $margin-first -$column-padding $margin-second;
+    } @else if $margin-first {
+        margin: $margin-first -$column-padding;
+    } @else {
+        margin: 0 (0-$column-padding);
+    }
+}
+
+@mixin column($padding-first: null, $padding-second: null) {
+    @if $padding-second {
+        padding: $padding-first $column-padding $padding-second;
+    } @else if $padding-first {
+        padding: $padding-first $column-padding;
+    } @else {
+        padding: 0 $column-padding;
+    }
+}
+
+@mixin underline {
+    &:after {
+        content: '';
+        border-bottom: 1px solid;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 3px;
+        @include respond-to(xs) {
+            bottom: 8px;
+        }
+    }
+}
+
+@mixin gradient-button-shadow($color: #d05305) {
+    box-shadow: 0 35px 40px -13px $color, 0 25px 20px -20px $color;
+    &.scaling-button:hover {
+        box-shadow: 0 10px 10px -5px $color;
+    }
+}
+
+@mixin default-link {
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    &:hover {
+        color: #3281ff;
+        border-bottom-color: initial;
+    }
+}

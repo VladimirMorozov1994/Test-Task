@@ -1,0 +1,46 @@
+version: "3.3"
+
+services:
+  # WordPress
+  test-site-wp:
+    image: wordpress:latest
+    container_name: test-site-wp
+    restart: always
+    working_dir: /var/www/html
+    ports:
+      - 80:80
+    volumes: 
+      - ./:/var/www/html/wp-content
+    environment:
+      WORDPRESS_DB_HOST: test-site-mysql:3306
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_PASSWORD: root
+      WORDPRESS_DB_NAME: test-site
+    networks:
+      - test-network
+  
+  # MySQL database
+  test-site-mysql:
+    image: mysql:5.7.22
+    container_name: test-site-mysql
+    restart: always
+    volumes: 
+      - dbdata:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: test-site
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: root
+    networks:
+      - test-network
+# Docker networks
+networks:
+  test-network:
+    driver: bridge
+
+# Volumes
+volumes:
+  dbdata:
+    driver: local
+
+  

@@ -1,0 +1,26 @@
+@import "variables";
+
+@function container-max-width($key) {
+    @if map-has-key($container-max-widths, $key) {
+        @return map-get($container-max-widths, $key);
+    }
+
+    @warn "Unknown `#{$key}` in $container-max-widths.";
+    @return null;
+}
+
+@function z-index($key) {
+    @if map-has-key($z-indexes, $key) {
+        @return map-get($z-indexes, $key);
+    }
+
+    @warn "Unknown `#{$key}` in $z-indexes.";
+    @return null;
+}
+
+@function delay-priority($key) {
+    @if map-has-key($delays, $key) {
+        @return map-get($delays, $key);
+    }
+    @return $key;
+}
