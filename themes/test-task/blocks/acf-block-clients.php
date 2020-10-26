@@ -13,7 +13,7 @@ $title = get_field('title');
                 $post_id = get_sub_field('client'); 
                 ?>
 
-                    <a href="/сlients" class="item">
+                    <a href="/clients/" class="item">
                         <?php $thumbnail = get_the_post_thumbnail_url($post_id);
                     echo file_get_contents($thumbnail);?>
                     </a>
