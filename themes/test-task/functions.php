@@ -378,3 +378,11 @@ function register_my_widgets(){
 		'after_title'   => "</h2>\n",
 	) );
 }
+
+add_action( 'template_redirect', 'redirect_post_type_single' );
+function redirect_post_type_single(){
+    if ( ! is_singular( 'clients' ) )
+        return;
+    wp_redirect( '/clients', 301 );
+    exit;
+}

@@ -13,7 +13,7 @@ $title = get_field('title');
                 $post_id = get_sub_field('client'); 
                 ?>
 
-                    <a href="/clients/" class="item">
+                    <a href="<?php echo get_post_type_archive_link('clients');?>" class="item">
                         <?php $thumbnail = get_the_post_thumbnail_url($post_id);
                     echo file_get_contents($thumbnail);?>
                     </a>

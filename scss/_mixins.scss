@@ -87,33 +87,3 @@
         padding: 0 $column-padding;
     }
 }
-
-@mixin underline {
-    &:after {
-        content: '';
-        border-bottom: 1px solid;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        bottom: 3px;
-        @include respond-to(xs) {
-            bottom: 8px;
-        }
-    }
-}
-
-@mixin gradient-button-shadow($color: #d05305) {
-    box-shadow: 0 35px 40px -13px $color, 0 25px 20px -20px $color;
-    &.scaling-button:hover {
-        box-shadow: 0 10px 10px -5px $color;
-    }
-}
-
-@mixin default-link {
-    padding-bottom: 2px;
-    border-bottom: 2px solid transparent;
-    &:hover {
-        color: #3281ff;
-        border-bottom-color: initial;
-    }
-}
