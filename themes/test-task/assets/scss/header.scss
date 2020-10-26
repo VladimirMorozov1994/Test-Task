@@ -110,7 +110,9 @@
             position: relative;
             display: flex;
             margin-right: 58px;
-
+            @include respond-to(sl) {
+                margin-right: 38px;
+            }
             >a {
                 padding: 5px 48px 5px 46px;
                 border: 1px solid transparent;

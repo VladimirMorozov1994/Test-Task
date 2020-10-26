@@ -47,7 +47,7 @@
             <div class="header-search">
                 <a href="" class="search-icon"></a>
                 <form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ) ?>" >  
-                    <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="Search here..." />
+                    <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="<?php $search_placeholder = get_field('search_placeholder', 'option'); if($search_placeholder){ echo $search_placeholder; } else { echo 'Search here...'; }?>" />
                     <input type="submit" id="searchsubmit" value="Search" />
                 </form>
             </div>

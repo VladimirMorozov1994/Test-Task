@@ -50,12 +50,12 @@ $search_query = get_query_var('s');
                                     <?php the_excerpt();?>
                                 </div>
                                 
-                                <a href="<?php the_permalink();?>">Read More</a>
+                                <a href="<?php the_permalink();?>"><?php $link_text = get_field('link_text', 'option'); if($link_text){ echo $link_text; } else { echo 'Read More'; }?></a>
                             </div>
                             
                         </div>
                     <?php } else : ?>
-                        <h2>No posts found</h2>
+                        <h2><?php $not_fount = get_field('not_fount_post_text', 'option'); if($not_fount){ echo $not_fount; } else { echo 'No posts found'; }?></h2>
                     <?php endif; ?>
 
                 </div>
